@@ -1,35 +1,48 @@
 import java.util.ArrayList;
 //codigo tomado de fjaram18
 public class DigraphAM extends Digraph {
-    private int[][] matrix ; 
-        /** Class constructor 
-         */
-	public DigraphAM(int size) {
-        super(size);    
-	    matrix = new int [size][size] ;
-		
-	}
-	
-        /** creates an arc between a source and a destination. the arc is given
-         * a certain value
-         */
-	public void addArc(int source, int destination, int weight) {
-                matrix[source][destination]= weight ;
-	}
-	
-        /** Selects a vertix and returns every successor it has. 
-         */
-	public ArrayList<Integer> getSuccessors(int vertex) {
-            ArrayList <Integer> lista = new ArrayList<>() ;      
-                 for (int i=0 ; i< matrix[vertex].length ; i++) {
-                     if (matrix[vertex][i]==1){
-                         lista.add(i);
-                     }
-                }
-                 return lista ;
-	}
+    
+    private int [][] Matriz_AD;
+    
+    public DigraphAM(int size){
+        super(size);
+        this.Matriz_AD = new int [size][size]; 
+    }
+    
+    
+    /**
+     * 
+     * @param origen
+     * @param destino 
+     * @param peso
+     */
+    public void addArc(int origen, int destino, int peso){
+        this.Matriz_AD[origen][destino] = peso;
+    }
+    
+    /**
+     * 
+     * @param origen
+     * @param destino
+     * @return peso del arco entre el vertice origen y el vertice destino
+     */
+    public int getWeight(int origen, int destino){
+        return this.Matriz_AD[origen][destino];
+    }
+    
+    /**
+     * 
+     * @param vertice
+     * @return vertices que tienen conexion o arista con el vertice parametro
+     */
+    public ArrayList<Integer> getSuccessors(int vertice){
+        ArrayList<Integer> sucesors = new ArrayList<>();
         
-        public int getWeight(int source, int destination){
-            return matrix [source][destination] ;
+        for(int i = 0; i < this.Matriz_AD.length; i++){
+            if(this.Matriz_AD[vertice][i] != 0){
+            sucesors.add(i);
+            }
         }
+        return sucesors;
+    }
 }
