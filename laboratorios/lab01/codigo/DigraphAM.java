@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-//codigo tomado de fjaram18
 public class DigraphAM extends Digraph {
     
     private int [][] Matriz_AD;
