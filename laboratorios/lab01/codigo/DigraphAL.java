@@ -1,46 +1,29 @@
+package talleres;
+
 import java.util.ArrayList;
 import javafx.util.Pair;
-//codigo tomado de fjaram18
+
+
 public class DigraphAL extends Digraph {
-    ArrayList<ArrayList<Pair<Integer, Integer>>> vertices;
+    
+    
+    ArrayList [] nodos;
     
     public DigraphAL(int size) {
         super(size);
-        vertices = new ArrayList<ArrayList<Pair<Integer, Integer>>>(size);
-        
-        for (int i = 0; i < size; i++) {
-            ArrayList<Pair<Integer, Integer>> verVacio = new ArrayList<Pair<Integer, Integer>>();
-            vertices.add(verVacio);
-        }
+        this.nodos = new ArrayList[size];
     }
 
-    public void addArc(int source, int destination, int weight) {
-        vertices.get(source).add( new Pair<>(destination, weight) );
+    public void addArc(int origen, int destino, int peso) {
+        this.nodos[origen].add(destino,peso);
     }
 
-    public ArrayList<Integer> getSuccessors(int vertex) {
-        ArrayList<Pair<Integer, Integer>> vertx = vertices.get(vertex);
-        ArrayList<Integer> solucion = new ArrayList<Integer>();
-        
-        for (int i=0; i<vertx.size(); i++) {
-            int vecino = vertx.get(i).getKey();
-            solucion.add(vecino);
-        }
-        
-        
-        return solucion;
+    public ArrayList<Integer> getSuccessors(int vertice) {
+        return this.nodos[vertice];    
     }
-
-    public int getWeight(int source, int destination) {
-        ArrayList<Pair<Integer, Integer>> vertx  = vertices.get(source);
-        
-        for (int i=0; i<vertx.size(); i++){
-            int adj = vertx.get(i).getKey();
-            if (adj == destination) {
-                return vertx.get(i).getValue();
-            }
-        }
-        return 0;
+    
+    public int getWeight(int origen, int destino) {
+        return (int) this.nodos[origen].get(destino);
     }
 
 }
