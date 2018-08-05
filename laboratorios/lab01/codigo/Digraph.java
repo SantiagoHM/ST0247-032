@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-//codigo tomado de fjaram18
 /**
  * Clase abstracta para la implementacion de grafos dirigidos
  *
