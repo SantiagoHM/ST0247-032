@@ -51,8 +51,35 @@ public static int [] mergesort(int[] a) {
 		return result;
 	}
 
-	public static void quicksort(int[] a) {
-		// complete...
-	}
-
+  public static void quickSort(int[] a, int menor, int mayor) {
+        if (a == null || a.length == 0) {
+            return;
+        }
+        if (menor >= mayor) {
+            return;
+        }
+        int pivote = a[menor + (mayor - menor) / 2]; //En el medio
+        int i = menor, j = mayor;
+        while (i <= j) {
+            while (a[i] < pivote) {
+                i++;
+            }
+            while (a[j] > pivote) {
+                j--;
+            }
+            if (i <= j) {
+                int aux = a[i];
+                a[i] = a[j];
+                a[j] = aux;
+                i++;
+                j--;
+            }
+        }
+        if (menor < j) {
+            quickSort(a, menor, j);
+        }
+        if (mayor > i) {
+            quickSort(a, i, mayor);
+        }
+    }
 }
