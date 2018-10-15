@@ -1,4 +1,6 @@
-/* Author: Sinclert Perez (UC3M) */
+/* Author: Sinclert Perez (UC3M)
+* https://github.com/Sinclert/Heuristics-TSP
+*/
 
 import java.io.*;
 import java.util.Scanner;
