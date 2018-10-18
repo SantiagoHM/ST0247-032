@@ -1,4 +1,4 @@
-"use strict";
+'use strict'
 
 function Carro(velocidad, consumoHora) {
   this.velocidad = velocidad;
