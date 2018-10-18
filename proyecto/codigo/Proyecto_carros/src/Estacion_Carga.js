@@ -1,4 +1,4 @@
-"use strict";
+'use strict'
 
 function Estacion_Carga(posMA, posXY, id, tipoEstacion, relacionCarga){
     Nodo.call(this, posMA, posXY, id);
