@@ -1,9 +1,19 @@
+var txt;
+var alg;
+
+function preload(){
+  txt = loadStrings("informacion.txt");
+}
+
 function setup() {
   // put setup code here
-  createCanvas(300,300);
+  createCanvas(windowWidth, windowHeight);
+  console.log(txt);
+  alg = new algoritmo();
+  alg.putInfo(txt);
+
 }
 
 function draw() {
-  // put drawing code here
-  background(0,0,0);
+
 }
