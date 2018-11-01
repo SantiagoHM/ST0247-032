@@ -1,33 +1,38 @@
 'use strict'
 //Clase para la implementacion de grafos.
- class DigraghAm
+ class DigraphAM{
 
-  var size;
-  var matriz;
   /*Se crea y se inicializa la matriz; la  matriz es cuadrada
   su tamaño viene dado
   por el numero de vertices.*/
-  function constructor(size){
-   this.size=size
-   this.matriz =new Array(size);
-      for(var i=0;i<matriz.length;i++){
-        this.matriz[i]=new Array(size);
+  constructor(size){
+   this.size=size;
+   this.matriz = new Array();
+      for(var i=0; i< size; i++){
+        var aux = new Array(size);
+        this.matriz[i]= aux;
       }
-  }
+      for(var i=0; i< size; i++){
+        for(var j=0; j< size; j++){
+          this.matriz[i][j]= 0;
+        }
+      }
 
-  }
+   }
+
+
   //Metodo addArc. Este metodo añade un arco al grafo en una matriz.
-  function addArc(source,destination,weight){
+  addArc(source,destination,weight){
     this.matriz[source][destination]=weight;
   }
 
   //Metodo getWeight. Este metodo retorna el peso de un arco en el grafo
-   function getWeight(source,destination){
+  getWeight(source,destination){
      return this.matriz[source][destination];
    }
    /*Metodo getSuccessors. Este metodo retorna un ArrayList con los sucesores
    de un nodo dado en el grafo.*/
-  function getSucceessors(vertice){
+  getSucceessors(vertice){
     var array = new Array();
     for (var i = 0; i < matriz[vertice].length; i++) {
            if (matriz[vertice][i] > 0) {
@@ -35,4 +40,5 @@
            }
     }
      return array;
-  }
+   }
+}

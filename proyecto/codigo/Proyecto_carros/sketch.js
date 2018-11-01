@@ -8,9 +8,9 @@ function preload(){
 function setup() {
   // put setup code here
   createCanvas(windowWidth, windowHeight);
-  console.log(txt);
-  alg = new algoritmo();
-  alg.putInfo(txt);
+  //console.log(txt);
+  alg = new Algoritmo(txt);
+  tiespi(alg);
 
 }
 
