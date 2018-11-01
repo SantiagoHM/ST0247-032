@@ -1,6 +1,8 @@
 "use strict";
-var N; //Numero total de nodos
-var M; //Numero de clientes
+import LinkedList from 'src/LinkedList';
+
+var n; //Numero total de nodos
+var m; //Numero de clientes
 var u;  //Numero de estaciones de carga
 var breaks; //Numero de puntos de soporte de la funcion de la carga de la bateria
 var r;  //Tase de consumo en Watts hora por kilometro
@@ -8,10 +10,10 @@ var speed; //Velocidad en kilometros por hora
 var Tmax;  //Tiempo maximo de duracion de la ruta de un vehiculo en horas
 var Smax; //Tiempo maximo de carga en horas en la estacion mas lenta.
 var st_customer; //Tiempo en horas que se demora visitando un cliente
-var Q; //Capacidad de la bateria en watts horas
+var q; //Capacidad de la bateria en watts horas
 var nodos = new Array();
 var clientes= new Array();
-var visited;
+var visited= new Array();
 var estaciones = new Array();
 var grafo;
 var ruta; //Recorrido total que se ha realizado
@@ -21,8 +23,8 @@ function algoritmo(){
 
 
   this.putInfo = function(text){
-    N = text[0];
-    M = text[1];
+    n = text[0];
+    m = text[1];
     u = text[2];
     breaks = text[3];
     r = text[4];
@@ -30,14 +32,13 @@ function algoritmo(){
     Tmax = text[6];
     Smax = text[7];
     st_customer = text[8];
-    Q = text[9];
+    q = text[9];
 
     //grafo = new DigraphAM(N);
 
     var times = new Array();
     var wat = new Array();
     var info = new Array();
-
 
     for(var i = 11 ; i< text.length; ++i){
       if(text[i] != ""){
@@ -70,33 +71,46 @@ function algoritmo(){
     }
 */
 
-  info = text[17].split(" ");
-  times.push(parseFloat(info[3]));
-  info = text[18].split(" ");
-  times.push(parseFloat(info[3]));
-  info = text[19].split(" ");
-  times.push(parseFloat(info[3]));
+    info = text[17].split(" ");
+    times.push(parseFloat(info[3]));
+    info = text[18].split(" ");
+    times.push(parseFloat(info[3]));
+    info = text[19].split(" ");
+    times.push(parseFloat(info[3]));
 
-  console.log(times);
+    console.log(times);
 
-  info = text[21].split(" ");
-  wat.push(parseFloat(info[3]));
-  info = text[22].split(" ");
-  wat.push(parseFloat(info[3]));
-  info = text[23].split(" ");
-  wat.push(parseFloat(info[3]));
+    info = text[21].split(" ");
+    wat.push(parseFloat(info[3]));
+    info = text[22].split(" ");
+    wat.push(parseFloat(info[3]));
+    info = text[23].split(" ");
+    wat.push(parseFloat(info[3]));
 
-  console.log(wat);
+    console.log(wat);
 
-  var tipos = new Array();
+    var tipos = new Array();
 
-  for(var aux = 0; aux < 3; i++){
-    tipos.push(wat[aux]/times[aux]);
+    for(var aux = 0; aux < 3; aux++){
+      tipos.push(wat[aux]/times[aux]);
+    }
+    console.log(tipos);
+
+    for(var aux = 0; aux< estaciones.length; aux++){
+      if(estaciones[aux].tipoEstacion == 0){estaciones[aux].watts_estacion = tipos[0];}
+      if(estaciones[aux].tipoEstacion == 1){estaciones[aux].watts_estacion = tipos[1];}
+      if(estaciones[aux].tipoEstacion == 2){estaciones[aux].watts_estacion = tipos[2];}
+    }
+    console.log(estaciones);
   }
 
-  console.log(tipos);
+  tiespi();
+}
 
-  }
+function tiespi(){
+  visited[0]= true;
+  var nodo = 0;
+  var camiones = new LinkedList();
 
 
 }
